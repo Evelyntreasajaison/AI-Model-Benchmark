@@ -6,17 +6,18 @@ from openai import OpenAI
 
 st.set_page_config(
     page_title="AI Model Benchmark Dashboard",
-    page_icon="🤖",
+    page_icon="",
     layout="wide"
 )
 
-st.title("🤖 AI Model Benchmark Dashboard")
+st.title("AI Model Benchmark Dashboard")
 st.markdown("Compare AI models based on **speed, usability, and response quality**.")
 
 
 client = OpenAI(
     base_url="https://router.huggingface.co/v1",
-    api_key="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"
+    api_key="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"
+"
 )
 
 models = {
@@ -39,7 +40,7 @@ prompt = st.text_area(
     height=120,
     label_visibility="collapsed"
 )
-run_button = st.button("🚀 Run Model Comparison")
+run_button = st.button("Run Model Comparison")
 
 
 if run_button:
@@ -87,12 +88,12 @@ if run_button:
         col1, col2 = st.columns(2)
 
         col1.metric(
-            "⚡ Fastest Model",
+            "Fastest Model",
             df.sort_values("Inference Speed (sec)").iloc[0]["Model"]
         )
 
         col2.metric(
-            "🧠 Highest Detail Score",
+            "Highest Detail Score",
             df.sort_values("Domain Performance Score", ascending=False).iloc[0]["Model"]
         )
 
@@ -101,16 +102,16 @@ if run_button:
         col1, col2 = st.columns(2)
 
         with col1:
-            st.subheader("⚡ Inference Speed")
+            st.subheader("Inference Speed")
             st.bar_chart(df.set_index("Model")["Inference Speed (sec)"])
 
         with col2:
-            st.subheader("🧠 Domain Performance")
+            st.subheader("Domain Performance")
             st.bar_chart(df.set_index("Model")["Domain Performance Score"])
 
         st.divider()
 
-        st.subheader("📊 Model Comparison Table")
+        st.subheader("Model Comparison Table")
         st.dataframe(df.drop(columns=["Output"]))
 
         st.divider()
