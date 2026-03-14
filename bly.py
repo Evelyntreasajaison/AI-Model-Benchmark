@@ -16,7 +16,7 @@ st.markdown("Compare AI models based on **speed, usability, and response quality
 
 client = OpenAI(
     base_url="https://router.huggingface.co/v1",
-    api_key="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"
+    api_key=""  # Add your API key here. The key is not included in this repository because it is public.
 "
 )
 
